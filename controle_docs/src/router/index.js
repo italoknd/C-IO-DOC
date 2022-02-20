@@ -4,6 +4,15 @@ import Home from '../views/Home.vue'
 const routes = [
   {
     path: '/',
+    redirect: '/login'
+  },
+  // {
+  //   path: '/login',
+  //   name: 'Login',
+  //   component: Login
+  // },
+  {
+    path: '/home',
     name: 'Home',
     component: Home
   },
