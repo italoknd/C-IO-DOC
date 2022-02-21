@@ -1,12 +1,100 @@
 <template>
   <div class="home">
-    <h1>HOME</h1>
+    <router-link to="/agendar">
+      <button id="agendar">
+        Agendar
+        <ion-icon name="book-outline"></ion-icon>
+      </button>
+    </router-link>
+
+    <router-link to="/edit">
+      <button id="editar">
+        Editar Registro
+        <ion-icon name="create-outline" id="edit-icon"></ion-icon>
+      </button>
+    </router-link>
   </div>
 </template>
 
 <script>
+import Agendar from '../components/Agendar.vue'
+import Edit from '../views/Edit.vue'
 
 export default {
   name: 'Home',
+  components: {
+    Agendar,
+    Edit
+  }
 }
 </script>
+
+<style scoped>
+.home {
+  display: flex;
+  height: 89vh;
+  flex-direction: row;
+  align-items: center; /*alinha verticalmente ao centro*/
+  justify-content: space-around; /*alinha horizontalmente*/
+}
+
+/* a {
+  width: 25%;
+  height: 15%;
+} */
+
+button {
+  padding: 1.3em 3em;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 700;
+  color: rgb(34, 34, 34);
+  background-color: #fff;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+  /* width: 25%;
+  height: 15%; */
+}
+
+button#agendar:hover {
+  background-color: #2ee59d;
+  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
+}
+
+/* button#agendar:active {
+  transform: translateY(-7px);
+} */
+
+button#editar:hover {
+  background-color: #0477bf;
+  box-shadow: 0px 15px 20px rgba(4, 119, 191, 0.466);
+  color: #fff;
+  transform: translateY(-7px);
+}
+
+/* button#editar:active {
+  transform: translateY(-1px);
+} */
+
+a {
+  color: black;
+}
+
+a:hover {
+  color: white;
+}
+
+ion-icon {
+  font-size: 16.5px;
+  position: absolute;
+  transform: translateY(-1px);
+  padding: 0 7px;
+}
+</style>
