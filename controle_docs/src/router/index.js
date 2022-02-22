@@ -1,26 +1,28 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
+import Login from '../views/Login.vue'
+import Agendar from '../components/Agendar.vue'
 
 const routes = [
   {
     path: '/',
     redirect: '/login'
   },
-  // {
-  //   path: '/login',
-  //   name: 'Login',
-  //   component: Login
-  // },
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login
+  },
   {
     path: '/home',
     name: 'Home',
     component: Home
   },
-  // {
-  //   path: '/agendar',
-  //   name: 'Agendar',
-  //   component: Agendar
-  // },
+  {
+    path: '/agendar',
+    name: 'Agendar',
+    component: Agendar
+  },
   {
     path: '/edit',
     name: 'Edit',

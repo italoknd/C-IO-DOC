@@ -44,8 +44,8 @@ export default {
 } */
 
 button {
-  padding: 1.3em 3em;
-  font-size: 12px;
+  padding: 3em 3em;
+  font-size: 14px;
   text-transform: uppercase;
   letter-spacing: 2.5px;
   font-weight: 700;
@@ -94,7 +94,7 @@ a:hover {
 ion-icon {
   font-size: 16.5px;
   position: absolute;
-  transform: translateY(-1px);
+  transform: translateY(0px);
   padding: 0 7px;
 }
 </style>
