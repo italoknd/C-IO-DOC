@@ -24,8 +24,8 @@ nav {
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  height: 8vh;
-  margin-bottom: 20px;
+  height: 80px;
+  margin-bottom: 50px;
   background: var(--main-color);
 }
 
@@ -34,22 +34,25 @@ ul {
 }
 
 li {
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-around;
   align-items: center;
   list-style: none;
-  margin-left: 30px;
+  margin-right: 30px;
   letter-spacing: 2px;
 }
 
 li a {
   /*estilizando router-link*/
   color: var(--letter-color);
+  text-decoration: none;
   transition: 0.3s;
 }
 
 li a:hover {
   color: var(--secundary-letter-color);
-  text-decoration: underline;
+  /* text-decoration: underline; */
+  border-bottom: 1px solid white;
+
 }
 </style>

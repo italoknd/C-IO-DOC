@@ -17,13 +17,13 @@
 </template>
 
 <script>
-import Agendar from '../components/Agendar.vue'
+import FormAgendamento from '../views/Agendar.vue'
 import Edit from '../views/Edit.vue'
 
 export default {
   name: 'Home',
   components: {
-    Agendar,
+    FormAgendamento,
     Edit
   }
 }

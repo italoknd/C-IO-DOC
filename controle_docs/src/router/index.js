@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
-import Agendar from '../components/Agendar.vue'
+import Agendar from '../views/Agendar.vue'
 
 const routes = [
   {
@@ -20,7 +20,7 @@ const routes = [
   },
   {
     path: '/agendar',
-    name: 'Agendar',
+    name: 'FormAgendamento',
     component: Agendar
   },
   {

@@ -23,7 +23,6 @@ export default {
   padding: 0;
   margin: 0;
   font-family: 'Poppins', BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  text-decoration: none;
 }
 
 :root{
@@ -34,6 +33,6 @@ export default {
 }
 
 #app{
-  background: #c6f1f8;
+  background: #dafaff;
 }
 </style>
