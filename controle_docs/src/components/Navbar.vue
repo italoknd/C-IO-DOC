@@ -24,8 +24,8 @@ nav {
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  height: 80px;
-  margin-bottom: 50px;
+  height: 9vh;
+  margin-bottom: 6vh;
   background: var(--main-color);
 }
 

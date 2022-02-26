@@ -1,6 +1,5 @@
 <template>
   <div id="component">
-    <div id="form">
       <form class="column g-3 needs-validation" novalidate>
           <div class="row">
             <div class="col-md-4">
@@ -88,7 +87,6 @@
             </button>
           </div>
       </form>
-    </div>
   </div>
 </template>
 
@@ -101,11 +99,11 @@ export default {
 <style scoped>
 * {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 #component {
-  height: 98vh;
+  height: 85vh;
   width: 88vw;
   margin: auto;
   max-width: 1000px;
@@ -183,6 +181,13 @@ button:active {
 
   to {
     transform: translateY(-0.2em);
+  }
+}
+
+/*  media query */
+@media (height: 767px){
+  #component{
+    height: 100vh;
   }
 }
 </style>

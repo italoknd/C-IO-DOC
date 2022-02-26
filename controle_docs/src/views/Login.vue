@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="login">
     <main>
       <h1>Faça o Login</h1>
       <input type="text" placeholder="Usuário" />
@@ -18,6 +18,22 @@ export default {
 </script>
 
 <style scoped>
+#login{
+  animation: slide 3s;
+  height: 85vh;
+  background: #dafaff;
+}
+
+@keyframes slide {
+  0%{
+    transform: translateY(-100%);
+  }50%{
+    transform: translateY(20%);
+  }100%{
+    transform: translateY(-9%);
+  }
+}
+
 main {
   background-color: rgba(14, 14, 14, 0.808);
   color: white;
@@ -37,7 +53,7 @@ main h1 {
 main input {
   display: flex;
   margin-bottom: 10px;
-  padding: 10px;
+  padding: 10px 22px;
   outline: none;
   font-size: 1rem;
 }
