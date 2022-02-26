@@ -30,6 +30,7 @@
             <div class="col-md-4">
               <label for="validationCustom02" class="form-label">Telefone:</label>
               <input
+                v-mask="'(##) #########'"
                 type="tel"
                 class="form-control"
                 id="validationCustom02"
