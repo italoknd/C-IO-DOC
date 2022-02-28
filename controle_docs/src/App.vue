@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Navbar v-if="isNotALoginPage"/>
+    <Navbar v-if="!$route.meta.hideNavbar" />
     <router-view />
   </div>
 </template>
@@ -9,13 +9,18 @@
 import Navbar from './components/Navbar.vue'
 
 export default {
-  name: "App",
-  components:{
-    Navbar,
+  name: 'App',
+  components: {
+    Navbar
   },
-  computed:{
-    isNotALoginPage(){
-      return this.$route.name !== 'login';
+  data() {
+    return {
+      isLogin: true
+    }
+  },
+  computed: {
+    isNotALoginPage() {
+      this.$route.name !== 'login'
     }
   }
 }
@@ -27,17 +32,18 @@ export default {
 * {
   padding: 0;
   margin: 0;
-  font-family: 'Poppins', BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: 'Poppins', BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+    Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-:root{
-  --letter-color: #F2F2F2;
-  --secundary-letter-color: #E2E8E9;
-  --main-color: #0477BF;
-  --secundary-color: #0468BF;
+:root {
+  --letter-color: #f2f2f2;
+  --secundary-letter-color: #e2e8e9;
+  --main-color: #0477bf;
+  --secundary-color: #0468bf;
 }
 
-#app{
+#app {
   background: #dafaff;
 }
 </style>

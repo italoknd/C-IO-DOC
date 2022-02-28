@@ -1,11 +1,13 @@
-import Vue from 'vue';
-import { createApp } from 'vue';
+import {createApp} from 'vue';
 import App from './App.vue';
 import router from './router';
-// import VueMask from 'v-mask';
+import Maska from 'maska'
+// import VueMask from '@devindex/vue-mask';
 
-// Vue.use(VueMask)
+const app = createApp(App);
 
-createApp(App).use(router).mount('#app');
+// app.use(VueMask);
+app.use(router).mount('#app');
 
 
+app.use(Maska);

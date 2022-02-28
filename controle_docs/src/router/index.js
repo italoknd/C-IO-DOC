@@ -11,7 +11,11 @@ const routes = [
   {
     path: '/login',
     name: 'Login',
-    component: () => import(/* webpackChunkName: "about" */ '../pages/Login.vue')
+    component: Login,
+    meta:{
+      hideNavbar: true
+    }
+    // component: () => import(/* webpackChunkName: "about" */ '../pages/Login.vue')
   },
   {
     path: '/home',

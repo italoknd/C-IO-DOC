@@ -1,114 +1,119 @@
 <template>
   <div id="component">
-      <form class="column g-3 needs-validation" novalidate>
-          <div class="row">
-            <div class="col-md-4">
-              <label for="validationCustom01" class="form-label"
-                >Nome Completo:</label
+    <form class="column g-3 needs-validation" novalidate>
+      <div class="row">
+        <div class="col-md-4">
+          <label for="validationCustom01" class="form-label">Nome Completo:</label>
+          <input
+
+            type="text"
+            class="form-control"
+            id="validationCustom01"
+            value=""
+            required
+          />
+          <div class="valid-feedback">Looks good!</div>
+        </div>
+        <div class="col-md-4">
+          <label for="validationCustom02" class="form-label">CPF:</label>
+          <input
+            v-maska="'###.###.###-##'"
+            type="text"
+            class="form-control"
+            id="validationCustom02"
+            value=""
+            required
+          />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <label for="validationCustom02" class="form-label">Telefone:</label>
+          <input
+            type="tel"
+            class="form-control"
+            id="validationCustom02"
+            value=""
+            required
+          />
+        </div>
+        <div class="col-md-4">
+          <label for="validationCustom04" class="form-label"
+            >Informe o tipo de documento:</label
+          >
+          <select class="form-select" id="validationCustom04" required>
+            <option selected disabled value="">Escolha...</option>
+            <option>RG</option>
+            <option>CPF</option>
+            <option>Espelho</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8">
+          <label for="exampleFormControlTextarea1" class="form-label"
+            >Pendências <span id="obs">(Caso haja alguma)</span>:</label
+          >
+          <textarea
+            class="form-control"
+            id="exampleFormControlTextarea1"
+            rows="3"
+          ></textarea>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <label for="" class="form-label">Data de entrega estimada: </label>
+          <input type="date" name="" class="form-control" />
+        </div>
+      </div>
+      <div class="col-12">
+        <button type="submit">
+          <div class="svg-wrapper-1">
+            <div class="svg-wrapper">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="24"
+                height="24"
               >
-              <input
-                type="text"
-                class="form-control"
-                id="validationCustom01"
-                value=""
-                required
-              />
-              <div class="valid-feedback">Looks good!</div>
-            </div>
-            <div class="col-md-4">
-              <label for="validationCustom02" class="form-label">CPF:</label>
-              <input
-                type="text"
-                class="form-control"
-                id="validationCustom02"
-                value=""
-                required
-              />
+                <path fill="none" d="M0 0h24v24H0z"></path>
+                <path
+                  fill="currentColor"
+                  d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"
+                ></path>
+              </svg>
             </div>
           </div>
-          <div class="row">
-            <div class="col-md-4">
-              <label for="validationCustom02" class="form-label">Telefone:</label>
-              <input
-                
-                type="tel"
-                class="form-control"
-                id="validationCustom02"
-                value=""
-                required
-              />
-            </div>
-            <div class="col-md-4">
-              <label for="validationCustom04" class="form-label">Informe o tipo de documento:</label>
-              <select class="form-select" id="validationCustom04" required>
-                <option selected disabled value="">Escolha...</option>
-                <option>RG</option>
-                <option>CPF</option>
-                <option>Espelho</option>
-              </select>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-8">
-              <label for="exampleFormControlTextarea1" class="form-label"
-                >Pendências <span id="obs">(Caso haja alguma)</span>:</label
-              >
-              <textarea
-                class="form-control"
-                id="exampleFormControlTextarea1"
-                rows="3"
-              ></textarea>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-4">
-              <label for="" class="form-label">Data de entrega estimada: </label>
-              <input type="date" name="" class="form-control" />
-            </div>
-          </div>
-          <div class="col-12">
-            <button type="submit">
-              <div class="svg-wrapper-1">
-                <div class="svg-wrapper">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    width="24"
-                    height="24"
-                  >
-                    <path fill="none" d="M0 0h24v24H0z"></path>
-                    <path
-                      fill="currentColor"
-                      d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"
-                    ></path>
-                  </svg>
-                </div>
-              </div>
-              <span>Enviar</span>
-            </button>
-          </div>
-      </form>
+          <span>Enviar</span>
+        </button>
+      </div>
+    </form>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'FormAgendamento'
+  name: 'FormAgendamento',
+  data() {
+    return {}
+  }
 }
 </script>
 
 <style scoped>
 * {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-  Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 #component {
-  height: 85vh;
+  height: 100vh;
   width: 88vw;
   margin: auto;
   max-width: 1000px;
   min-width: 400px;
+  background: #dafaff;
 }
 
 form {
@@ -186,8 +191,8 @@ button:active {
 }
 
 /*  media query */
-@media (height: 767px){
-  #component{
+@media (height: 767px) {
+  #component {
     height: 100vh;
   }
 }
