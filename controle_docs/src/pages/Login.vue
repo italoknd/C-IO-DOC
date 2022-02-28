@@ -3,10 +3,12 @@
     <main>
       <h1>Faça o Login</h1>
       <input type="text" placeholder="Usuário" />
-      <input type="text" placeholder="Senha" />
-      <button type="submit">
-        <a href="index.html" target="_blank" rel="next">Entrar</a>
-      </button>
+      <input type="password" placeholder="Senha" />
+      <router-link to="/home">
+        <button type="submit">
+          Entrar
+        </button>
+      </router-link>
     </main>
   </div>
 </template>
@@ -19,18 +21,18 @@ export default {
 
 <style scoped>
 #login{
-  animation: slide 3s;
-  height: 85vh;
+  animation: slide 2.5s;
+  height: 100vh;
   background: #dafaff;
 }
 
 @keyframes slide {
   0%{
-    transform: translateY(-100%);
+    transform: translateY(-80%);
   }50%{
-    transform: translateY(20%);
+    transform: translateY(10%);
   }100%{
-    transform: translateY(-9%);
+    transform: translateY(0%);
   }
 }
 

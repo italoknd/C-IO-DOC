@@ -17,8 +17,8 @@
 </template>
 
 <script>
-import FormAgendamento from '../views/Agendar.vue'
-import Edit from '../views/Edit.vue'
+import FormAgendamento from '../pages/Agendar.vue'
+import Edit from '../pages/Edit.vue'
 
 export default {
   name: 'Home',

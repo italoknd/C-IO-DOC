@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Navbar />
+    <Navbar v-if="isNotALoginPage"/>
     <router-view />
   </div>
 </template>
@@ -12,6 +12,11 @@ export default {
   name: "App",
   components:{
     Navbar,
+  },
+  computed:{
+    isNotALoginPage(){
+      return this.$route.name !== 'login';
+    }
   }
 }
 </script>
