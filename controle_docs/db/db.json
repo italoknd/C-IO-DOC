@@ -1,0 +1,19 @@
+{
+  "people":{
+
+  },
+  "doctypes":[
+    {
+      "id": 1,
+      "type": "RG"
+    },
+    {
+      "id": 2,
+      "type": "CPF"
+    },
+    {
+      "id": 2,
+      "type": "Espelho"
+    }
+  ]
+}

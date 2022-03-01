@@ -15,7 +15,6 @@ const routes = [
     meta:{
       hideNavbar: true
     }
-    // component: () => import(/* webpackChunkName: "about" */ '../pages/Login.vue')
   },
   {
     path: '/home',
@@ -30,9 +29,6 @@ const routes = [
   {
     path: '/edit',
     name: 'Edit',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../pages/Edit.vue')
   }
 ]

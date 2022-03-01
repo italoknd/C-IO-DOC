@@ -3,13 +3,15 @@
     <form class="column g-3 needs-validation" novalidate>
       <div class="row">
         <div class="col-md-4">
-          <label for="validationCustom01" class="form-label">Nome Completo:</label>
+          <label for="validationCustom01" class="form-label"
+            >Nome Completo:</label
+          >
           <input
-
+            v-model="person.fullName"
             type="text"
             class="form-control"
             id="validationCustom01"
-            value=""
+
             required
           />
           <div class="valid-feedback">Looks good!</div>
@@ -17,12 +19,12 @@
         <div class="col-md-4">
           <label for="validationCustom02" class="form-label">CPF:</label>
           <input
+            v-model="person.cpf"
             v-maska="'###.###.###-##'"
             type="text"
             class="form-control"
             id="validationCustom02"
-            value=""
-            required
+
           />
         </div>
       </div>
@@ -30,11 +32,11 @@
         <div class="col-md-4">
           <label for="validationCustom02" class="form-label">Telefone:</label>
           <input
+            v-model="person.tel"
+            v-maska="'(##) # ####-####'"
             type="tel"
             class="form-control"
             id="validationCustom02"
-            value=""
-            required
           />
         </div>
         <div class="col-md-4">
@@ -43,9 +45,7 @@
           >
           <select class="form-select" id="validationCustom04" required>
             <option selected disabled value="">Escolha...</option>
-            <option>RG</option>
-            <option>CPF</option>
-            <option>Espelho</option>
+            <option v-for="doc in doctypes" key="doc.id" :value="doc.type">{{doc.type}}</option>
           </select>
         </div>
       </div>
@@ -55,6 +55,7 @@
             >Pendências <span id="obs">(Caso haja alguma)</span>:</label
           >
           <textarea
+            v-model="person.pendencies"
             class="form-control"
             id="exampleFormControlTextarea1"
             rows="3"
@@ -68,7 +69,7 @@
         </div>
       </div>
       <div class="col-12">
-        <button type="submit">
+        <button type="submit" @click="send()">
           <div class="svg-wrapper-1">
             <div class="svg-wrapper">
               <svg
@@ -96,7 +97,25 @@
 export default {
   name: 'FormAgendamento',
   data() {
-    return {}
+    return {
+      person: {
+        fullName: '',
+        cpf: '',
+        tel: '',
+        pendencies: '',
+        date: ''
+      },
+
+      doctypes: null
+    }
+  },
+  methods:{
+    send(){
+
+    },
+    async getDocTypes(){
+      
+    }
   }
 }
 </script>

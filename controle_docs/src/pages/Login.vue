@@ -28,7 +28,7 @@ export default {
 
 @keyframes slide {
   0%{
-    transform: translateY(-80%);
+    transform: translateY(-60%);
   }50%{
     transform: translateY(10%);
   }100%{
