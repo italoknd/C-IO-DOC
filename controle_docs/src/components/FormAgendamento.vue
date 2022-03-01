@@ -11,7 +11,6 @@
             type="text"
             class="form-control"
             id="validationCustom01"
-
             required
           />
           <div class="valid-feedback">Looks good!</div>
@@ -24,7 +23,6 @@
             type="text"
             class="form-control"
             id="validationCustom02"
-
           />
         </div>
       </div>
@@ -45,7 +43,9 @@
           >
           <select class="form-select" id="validationCustom04" required>
             <option selected disabled value="">Escolha...</option>
-            <option v-for="doc in doctypes" key="doc.id" :value="doc.type">{{doc.type}}</option>
+            <option v-for="doc in doctypes" :key="doc.id" :value="doc.type">
+              {{ doc.type }}
+            </option>
           </select>
         </div>
       </div>
@@ -69,7 +69,7 @@
         </div>
       </div>
       <div class="col-12">
-        <button type="submit" @click="send()">
+        <button @click="send()">
           <div class="svg-wrapper-1">
             <div class="svg-wrapper">
               <svg
@@ -94,10 +94,15 @@
 </template>
 
 <script>
+import useValidate from '@vuelidate/core'
+import { required } from '@vuelidate/validators'
+import PeopleServices from '../services/PeopleServices'
+
 export default {
   name: 'FormAgendamento',
   data() {
     return {
+      v$: useValidate(),
       person: {
         fullName: '',
         cpf: '',
@@ -106,15 +111,30 @@ export default {
         date: ''
       },
 
-      doctypes: null
+      doctypes: [
+        { id: 1, type: 'RG' },
+        { id: 2, type: 'CPF' },
+        { id: 3, type: 'Espelho' }
+      ] //provisorio
     }
   },
-  methods:{
-    send(){
-
-    },
-    async getDocTypes(){
+  validations: {
+    person: {
+      fullName: {required},
+      cpf: {required},
+      tel: {required},
+      date: {required}
+    }
+  },
+  methods: {
+    send() {
+      this.v$.$validate()
       
+      if(!this.v$.$error){
+        alert('Validado com sucesso!')
+      }else{
+        alert('Nem todos os campos foram preenchidos...')
+      }
     }
   }
 }
