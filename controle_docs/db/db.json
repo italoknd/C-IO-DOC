@@ -1,8 +1,7 @@
 {
-  "people":[
-    
+  "people": [
   ],
-  "doctypes":[
+  "doctypes": [
     {
       "id": 1,
       "type": "RG"
@@ -12,7 +11,7 @@
       "type": "CPF"
     },
     {
-      "id": 2,
+      "id": 3,
       "type": "Espelho"
     }
   ]

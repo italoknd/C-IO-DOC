@@ -145,6 +145,7 @@ export default {
     PeopleServices.listDocTypes().then(response => {
       // console.log(response.data);
       this.doctypes = response.data
+      console.log(response);
     })
   },
   methods: {
