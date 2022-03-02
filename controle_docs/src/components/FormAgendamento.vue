@@ -1,9 +1,17 @@
 <template>
   <div id="component">
+    <MensagemConclusao
+      :mensagemConclusao="message"
+      :bg_color="background"
+      :color="color"
+      v-show="message"
+    />
     <form class="column g-3 needs-validation" @submit="send">
       <div class="row">
         <div class="col-md-4">
-          <label for="validationCustom01" class="form-label">Nome Completo:</label>
+          <label for="validationCustom01" class="form-label"
+            >Nome Completo:</label
+          >
           <input
             v-model="person.fullName"
             type="text"
@@ -38,7 +46,12 @@
           <label for="validationCustom04" class="form-label"
             >Informe o tipo de documento:</label
           >
-          <select class="form-select" id="validationCustom04" required >
+          <select
+            class="form-select"
+            id="validationCustom04"
+            required
+            v-model="person.doctype"
+          >
             <option selected disabled value="">Escolha...</option>
             <option v-for="doc in doctypes" :key="doc.id">
               {{ doc.type }}
@@ -99,21 +112,26 @@
 // import useValidate from '@vuelidate/core'
 import { required } from '@vuelidate/validators'
 import PeopleServices from '../services/PeopleServices'
+import MensagemConclusao from '../components/MensagemConclusao.vue'
 
 export default {
   name: 'FormAgendamento',
   data() {
     return {
+      // v$: useValidate(),
       person: {
         fullName: '',
         cpf: '',
         tel: '',
         pendencies: '',
         date: '',
-        doctypes: [],
+        doctype: ''
       },
-      people:[],
-      // v$: useValidate(),
+      doctypes: [],
+
+      background: '#0477bf',
+      color: 'white',
+      message: ''
     }
   },
   validations: {
@@ -132,7 +150,6 @@ export default {
   methods: {
     send(e) {
       e.preventDefault()
-      // console.log(this.person)
       // this.$v.$touch()
 
       if (false) {
@@ -140,20 +157,23 @@ export default {
       } else {
         PeopleServices.save(this.person)
 
-        .then(res => {
-          this.person = {}
-          console.log(res.data)
-          // this.message = 'Dados enviados com sucesso!'
-          setTimeout(() => {
-            // this.message = ''
-            location.reload()
-          }, 3000)
-        })
-        .catch(err => {
-          console.log(err)
-        })
+          .then(res => {
+            this.person = {}
+            console.log(res.data)
+            this.message = 'Agendamento efetuado com sucesso!'
+            setTimeout(() => {
+              this.message = ''
+              location.reload()
+            }, 5000)
+          })
+          .catch(err => {
+            console.log(err)
+          })
       }
     }
+  },
+  components: {
+    MensagemConclusao
   }
 }
 </script>
@@ -177,6 +197,7 @@ form {
   border: 1px solid rgba(0, 0, 0, 0.384);
   padding: 20px;
   border-radius: 4px;
+  box-shadow: 3px 3px 20px 0px rgba(0, 0, 0, 0.384);
 }
 
 label,
