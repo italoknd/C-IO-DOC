@@ -5,9 +5,7 @@
       <input type="text" placeholder="Usuário" />
       <input type="password" placeholder="Senha" />
       <router-link to="/home">
-        <button type="submit">
-          Entrar
-        </button>
+        <button type="submit">Entrar</button>
       </router-link>
     </main>
   </div>
@@ -15,24 +13,33 @@
 
 <script>
 export default {
-  name: 'Login',
+  name: 'Login'
 }
 </script>
 
 <style scoped>
-#login{
-  animation: slide 2.5s;
-  height: 100vh;
+#login {
+  animation: slide 3s;
+  min-height: 100vh;
   background: #dafaff;
 }
 
 @keyframes slide {
-  0%{
-    transform: translateY(-60%);
-  }50%{
-    transform: translateY(10%);
-  }100%{
-    transform: translateY(0%);
+  0% {
+    transform: translateY(-60vh);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(5vh);
+    opacity: .9;
+  }
+  70% {
+    transform: translateY(-7vh);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0vh);
+    opacity: 1;
   }
 }
 
@@ -60,7 +67,7 @@ main input {
   font-size: 1rem;
 }
 
-input::placeholder{
+input::placeholder {
   color: var();
 }
 

@@ -1,4 +1,4 @@
-import { http } from "./api-config";
+import { http } from "./api-config"; //importando arquivo de config da api (api-config.js)
 
 export default {
   save: (person) => {
@@ -11,6 +11,10 @@ export default {
 
   findAll: () => {
     return http.get("people");
+  },
+
+  listDocTypes: () =>{
+    return http.get("doctypes");
   },
 
   delete: (person) => {

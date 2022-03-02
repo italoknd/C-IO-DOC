@@ -32,14 +32,14 @@ export default {
 <style scoped>
 .home {
   display: flex;
-  height: 89vh;
+  min-height: 83vh;
   flex-direction: row;
   align-items: center; /*alinha verticalmente ao centro*/
   justify-content: space-around; /*alinha horizontalmente*/
 }
 
 /* a {
-  width: 25%;
+  min-width: 25%;
   height: 15%;
 } */
 

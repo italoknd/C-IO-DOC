@@ -1,11 +1,9 @@
 <template>
   <div id="component">
-    <form class="column g-3 needs-validation" novalidate>
+    <form class="column g-3 needs-validation" @submit="send">
       <div class="row">
         <div class="col-md-4">
-          <label for="validationCustom01" class="form-label"
-            >Nome Completo:</label
-          >
+          <label for="validationCustom01" class="form-label">Nome Completo:</label>
           <input
             v-model="person.fullName"
             type="text"
@@ -13,7 +11,6 @@
             id="validationCustom01"
             required
           />
-          <div class="valid-feedback">Looks good!</div>
         </div>
         <div class="col-md-4">
           <label for="validationCustom02" class="form-label">CPF:</label>
@@ -41,9 +38,9 @@
           <label for="validationCustom04" class="form-label"
             >Informe o tipo de documento:</label
           >
-          <select class="form-select" id="validationCustom04" required>
+          <select class="form-select" id="validationCustom04" required >
             <option selected disabled value="">Escolha...</option>
-            <option v-for="doc in doctypes" :key="doc.id" :value="doc.type">
+            <option v-for="doc in doctypes" :key="doc.id">
               {{ doc.type }}
             </option>
           </select>
@@ -65,11 +62,16 @@
       <div class="row">
         <div class="col-md-4">
           <label for="" class="form-label">Data de entrega estimada: </label>
-          <input type="date" name="" class="form-control" />
+          <input
+            type="date"
+            name=""
+            class="form-control"
+            v-model="person.date"
+          />
         </div>
       </div>
       <div class="col-12">
-        <button @click="send()">
+        <button type="submit">
           <div class="svg-wrapper-1">
             <div class="svg-wrapper">
               <svg
@@ -94,7 +96,7 @@
 </template>
 
 <script>
-import useValidate from '@vuelidate/core'
+// import useValidate from '@vuelidate/core'
 import { required } from '@vuelidate/validators'
 import PeopleServices from '../services/PeopleServices'
 
@@ -102,38 +104,54 @@ export default {
   name: 'FormAgendamento',
   data() {
     return {
-      v$: useValidate(),
       person: {
         fullName: '',
         cpf: '',
         tel: '',
         pendencies: '',
-        date: ''
+        date: '',
+        doctypes: [],
       },
-
-      doctypes: [
-        { id: 1, type: 'RG' },
-        { id: 2, type: 'CPF' },
-        { id: 3, type: 'Espelho' }
-      ] //provisorio
+      people:[],
+      // v$: useValidate(),
     }
   },
   validations: {
     person: {
-      fullName: {required},
-      cpf: {required},
-      tel: {required},
-      date: {required}
+      fullName: { required },
+      cpf: { required },
+      tel: { required }
     }
   },
+  mounted() {
+    PeopleServices.listDocTypes().then(response => {
+      // console.log(response.data);
+      this.doctypes = response.data
+    })
+  },
   methods: {
-    send() {
-      this.v$.$validate()
-      
-      if(!this.v$.$error){
-        alert('Validado com sucesso!')
-      }else{
-        alert('Nem todos os campos foram preenchidos...')
+    send(e) {
+      e.preventDefault()
+      // console.log(this.person)
+      // this.$v.$touch()
+
+      if (false) {
+        alert('Existem campos obrigatórios vazios!')
+      } else {
+        PeopleServices.save(this.person)
+
+        .then(res => {
+          this.person = {}
+          console.log(res.data)
+          // this.message = 'Dados enviados com sucesso!'
+          setTimeout(() => {
+            // this.message = ''
+            location.reload()
+          }, 3000)
+        })
+        .catch(err => {
+          console.log(err)
+        })
       }
     }
   }
@@ -147,7 +165,7 @@ export default {
 }
 
 #component {
-  height: 100vh;
+  min-height: 100vh;
   width: 88vw;
   margin: auto;
   max-width: 1000px;

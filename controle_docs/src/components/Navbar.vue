@@ -2,7 +2,9 @@
   <div>
     <nav>
       <ul class="ul-style">
-        <li class="list-style"><router-link to="/home">Home</router-link></li>
+        <li class="list-style">
+          <router-link to="/home">Home</router-link>
+        </li>
         <li class="list-style">
           <router-link to="/edit">Editar Registro</router-link>
         </li>
@@ -24,7 +26,7 @@ nav {
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  height: 9vh;
+  min-height: 10vh;
   margin-bottom: 6vh;
   background: var(--main-color);
 }
@@ -39,7 +41,7 @@ li {
   align-items: center;
   list-style: none;
   margin-right: 30px;
-  letter-spacing: 2px;
+  letter-spacing: 2.5px;
 }
 
 li a {
@@ -51,8 +53,6 @@ li a {
 
 li a:hover {
   color: var(--secundary-letter-color);
-  /* text-decoration: underline; */
   border-bottom: 1px solid white;
-
 }
 </style>
