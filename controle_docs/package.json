@@ -29,7 +29,8 @@
     "@vue/cli-service": "^5.0.1",
     "@vue/compiler-sfc": "^3.0.0",
     "axios": "^0.26.0",
-    "string-mask": "^0.3.0"
+    "string-mask": "^0.3.0",
+    "vuelidate": "^0.7.7"
   },
   "description": "## Project setup ``` npm install ```",
   "main": "babel.config.js",

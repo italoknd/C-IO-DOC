@@ -6,7 +6,7 @@
           <router-link to="/home">Home</router-link>
         </li>
         <li class="list-style">
-          <router-link to="/edit">Editar Registro</router-link>
+          <router-link to="/agendamentos">Agendamentos</router-link>
         </li>
       </ul>
     </nav>

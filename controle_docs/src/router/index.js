@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../pages/Home.vue'
 import Login from '../pages/Login.vue'
 import Agendar from '../pages/Agendar.vue'
+import EditarDados from '../components/EditarDados.vue'
 
 const routes = [
   {
@@ -27,10 +28,15 @@ const routes = [
     component: Agendar
   },
   {
-    path: '/edit',
-    name: 'Edit',
-    component: () => import(/* webpackChunkName: "about" */ '../pages/Edit.vue')
-  }
+    path: '/agendamentos',
+    name: 'Agendamentos',
+    component: () => import(/* webpackChunkName: "about" */ '../pages/Agendamentos.vue')
+  },
+  {
+    path: '/editar',
+    name: 'EditarDados',
+    component: EditarDados
+  },
 ]
 
 const router = createRouter({

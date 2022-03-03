@@ -1,11 +1,5 @@
 <template>
-  <div id="component">
-    <MensagemConclusao
-      :mensagemConclusao="message"
-      :bg_color="background"
-      :color="color"
-      v-show="message"
-    />
+  <div>
     <form class="column g-3 needs-validation" @submit="send">
       <div class="row">
         <div class="col-md-4">
@@ -17,7 +11,6 @@
             type="text"
             class="form-control"
             id="validationCustom01"
-            
           />
         </div>
         <div class="col-md-4">
@@ -49,7 +42,6 @@
           <select
             class="form-select"
             id="validationCustom04"
-            
             v-model="person.doctype"
           >
             <option selected disabled value="">Escolha...</option>
@@ -109,13 +101,8 @@
 </template>
 
 <script>
-import useValidate from '@vuelidate/core'
-import { required, maxLength } from '@vuelidate/validators'
-import PeopleServices from '../services/PeopleServices'
-import MensagemConclusao from '../components/MensagemConclusao.vue'
-
 export default {
-  name: 'FormAgendamento',
+  name: 'EditarDados',
   data() {
     return {
       person: {
@@ -125,160 +112,8 @@ export default {
         pendencies: '',
         date: '',
         doctype: ''
-      },
-      doctypes: [],
-
-      background: '#0477bf',
-      color: 'white',
-      message: ''
-    }
-  },
-  setup() {
-    return { v$: useValidate() }
-  },
-  validations() {
-    return {
-      person: {
-        fullName: { required },
-        cpf: { required },
-        tel: { required },
-        doctype: { required },
-        date: { required },
       }
     }
-  },
-  mounted() {
-    PeopleServices.listDocTypes().then(response => {
-      // console.log(response.data);
-      this.doctypes = response.data
-      console.log(response)
-    })
-  },
-  methods: {
-    send(e) {
-      e.preventDefault()
-      this.v$.$touch()
-
-      if (this.v$.$invalid) {
-        alert('Existem campos obrigatórios vazios!')
-      } else {
-        PeopleServices.save(this.person)
-
-          .then(res => {
-            this.person = {}
-            console.log(res.data)
-            this.message = 'Agendamento efetuado com sucesso!'
-            setTimeout(() => {
-              this.message = ''
-              location.reload()
-            }, 5000)
-          })
-          .catch(err => {
-            console.log(err)
-          })
-      }
-    }
-  },
-  components: {
-    MensagemConclusao
   }
 }
 </script>
-
-<style scoped>
-* {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
-
-#component {
-  min-height: 100vh;
-  width: 88vw;
-  margin: auto;
-  max-width: 1000px;
-  min-width: 400px;
-  background: #dafaff;
-}
-
-form {
-  border: 1px solid rgba(0, 0, 0, 0.384);
-  padding: 20px;
-  border-radius: 4px;
-  box-shadow: 3px 3px 20px 0px rgba(0, 0, 0, 0.384);
-}
-
-label,
-span {
-  font-weight: 600;
-}
-
-#obs {
-  font-weight: normal;
-}
-
-.row,
-button {
-  margin-bottom: 30px;
-}
-
-button {
-  font-family: inherit;
-  font-size: 20px;
-  background: var(--main-color);
-  color: white;
-  padding: 0.5em 2em;
-  padding-left: 1em;
-  display: flex;
-  align-items: center;
-  border: none;
-  border-radius: 4px;
-  overflow: hidden;
-  transition: all 0.3s;
-  margin-top: 20px;
-}
-
-button span {
-  display: block;
-  margin-left: 0.3em;
-  transition: all 0.3s ease-in-out;
-}
-
-button svg {
-  display: block;
-  transform-origin: center center;
-  transition: transform 0.3s ease-in-out;
-}
-
-button:hover .svg-wrapper {
-  animation: fly-1 0.6s ease-in-out infinite alternate;
-}
-
-button:hover svg {
-  transform: translateX(-0.4em) rotate(45deg) scale(1.1);
-}
-
-button:hover span {
-  transform: translateX(0.5em);
-}
-
-button:active {
-  transform: scale(0.95);
-}
-
-@keyframes fly-1 {
-  from {
-    transform: translateY(0.2em);
-  }
-
-  to {
-    transform: translateY(-0.2em);
-  }
-}
-
-/*  media query */
-@media (height: 767px) {
-  #component {
-    height: 100vh;
-  }
-}
-</style>

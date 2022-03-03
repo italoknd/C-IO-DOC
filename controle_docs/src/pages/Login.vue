@@ -2,18 +2,41 @@
   <div id="login">
     <main>
       <h1>Faça o Login</h1>
-      <input type="text" placeholder="Usuário" />
-      <input type="password" placeholder="Senha" />
-      <router-link to="/home">
-        <button type="submit">Entrar</button>
-      </router-link>
+      <input type="text" placeholder="Usuário" v-model="user.inputUser" />
+      <input type="password" placeholder="Senha" v-model="user.inputPassword" />
+      <!-- <router-link to="/home">
+      </router-link> -->
+      <button type="submit" @click="loginUser">Entrar</button>
     </main>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Login'
+  name: 'Login',
+  data() {
+    return {
+      correctUser: 'adm',
+      correctPassword: 123,
+
+      user: {
+        inputUser: '',
+        inputPassword: ''
+      }
+    }
+  },
+  methods: {
+    loginUser() {
+      if (
+        this.correctUser != this.user.inputUser &&
+        this.correctPassword != this.user.inputPassword
+      ) {
+        alert('ta errado aí primo')
+      } else {
+        this.$router.push({path: 'home'})
+      }
+    }
+  }
 }
 </script>
 
@@ -31,7 +54,7 @@ export default {
   }
   50% {
     transform: translateY(5vh);
-    opacity: .9;
+    opacity: 0.9;
   }
   70% {
     transform: translateY(-7vh);

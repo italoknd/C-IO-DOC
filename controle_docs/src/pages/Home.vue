@@ -7,9 +7,9 @@
       </button>
     </router-link>
 
-    <router-link to="/edit">
+    <router-link to="/agendamentos">
       <button id="editar">
-        Editar Registro
+        Agendamentos
         <ion-icon name="create-outline" id="edit-icon"></ion-icon>
       </button>
     </router-link>
@@ -18,13 +18,13 @@
 
 <script>
 import FormAgendamento from '../pages/Agendar.vue'
-import Edit from '../pages/Edit.vue'
+import Agendamentos from './Agendamentos.vue'
 
 export default {
   name: 'Home',
   components: {
     FormAgendamento,
-    Edit
+    Agendamentos
   }
 }
 </script>
