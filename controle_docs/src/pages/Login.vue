@@ -31,7 +31,7 @@ export default {
         this.correctUser != this.user.inputUser &&
         this.correctPassword != this.user.inputPassword
       ) {
-        alert('ta errado aí primo')
+        alert('Senha ou usuário incorreto')
       } else {
         this.$router.push({path: 'home'})
       }
