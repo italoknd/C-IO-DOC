@@ -110,7 +110,7 @@
 
 <script>
 import useValidate from '@vuelidate/core'
-import { required, maxLength } from '@vuelidate/validators'
+import { required, minLength } from '@vuelidate/validators'
 import PeopleServices from '../services/PeopleServices'
 import MensagemConclusao from '../components/MensagemConclusao.vue'
 
@@ -140,7 +140,7 @@ export default {
     return {
       person: {
         fullName: { required },
-        cpf: { required },
+        cpf: { required, minLength: minLength(4) },
         tel: { required },
         doctype: { required },
         date: { required },
