@@ -1,6 +1,6 @@
 <template>
   <div>
-    <table class="table" v-if="people.length !== 0">
+    <table class="table">
       <thead>
         <tr>
           <th class="col">Nome:</th>
@@ -10,23 +10,23 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(person, index) in people" :key="index">
-          <td :hidden="person.stts == true">{{ person.fullName }}</td>
-          <td :hidden="person.stts == true">{{ person.cpf }}</td>
-          <td :hidden="person.stts == true">{{ person.date }}</td>
-          <td :hidden="person.stts == true">
+        <tr v-for="(schedule, index) in schedules" :key="index">
+          <td>{{ schedule.fullName }}</td>
+          <td>{{ schedule.cpf }}</td>
+          <td>{{ schedule.expectedDate }}</td>
+          <td>
             <div>
               <router-link
-                :to="{ name: 'EditarDados', params: { id: person.id } }"
+                :to="{ name: 'EditarDados', params: { id: schedule.id } }"
               >
                 <div>
                   <button type="submit">Editar</button>
                 </div>
               </router-link>
               <!-- <select name="" id="">
-                <option value="" selected>Pendente</option>
-                <option value="">Entregue</option>
-              </select> -->
+                  <option value="" selected>Pendente</option>
+                  <option value="">Entregue</option>
+                </select> -->
               <div>
                 <button @click="setStatus(index)">Entregue</button>
               </div>
@@ -36,11 +36,9 @@
       </tbody>
     </table>
 
-
-    
     <div class="margin">
       <h1>Documentos entregues (Teste)</h1>
-      <table class="table" v-if="people.length !== 0">
+      <table class="table">
         <thead>
           <tr>
             <th class="col">Nome:</th>
@@ -50,14 +48,14 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(person, index) in people" :key="index">
-            <td :hidden="person.stts == false">{{ person.fullName }}</td>
-            <td :hidden="person.stts == false">{{ person.cpf }}</td>
-            <td :hidden="person.stts == false">{{ person.date }}</td>
-            <td :hidden="person.stts == false">
+          <tr v-for="(schedule, index) in schedules" :key="index">
+            <td>{{ schedule.fullName }}</td>
+            <td>{{ schedule.cpf }}</td>
+            <td>{{ formatedDate(schedule.expectedDate)}}</td>
+            <td>
               <div>
                 <router-link
-                  :to="{ name: 'EditarDados', params: { id: person.id } }"
+                  :to="{ name: 'EditarDados', params: { id: schedule.id } }"
                 >
                   <div>
                     <button type="submit">Editar</button>
@@ -68,7 +66,7 @@
                   <option value="">Entregue</option>
                 </select> -->
                 <div>
-                  <button @click="setStatus(index)">Entregue</button>
+                  <button>Entregue</button>
                 </div>
               </div>
             </td>
@@ -80,46 +78,38 @@
 </template>
 
 <script>
-import PeopleServices from '../services/PeopleServices'
+import moment from 'moment'
+import SchedulesServices from '../services/SchedulesServices'
 
 export default {
   name: 'Edit',
   data() {
     return {
-      people: [],
-      teste: []
+      schedules: []
     }
   },
+
   mounted() {
-    this.findAllPeople()
+    this.findAllSchedules()
   },
+
   methods: {
-    findAllPeople() {
-      PeopleServices.findAll()
+    findAllSchedules() {
+      SchedulesServices.findAll()
 
         .then(response => {
-          this.people = response.data
-          console.log(this.people)
-
-          const newPeople = this.people.map(teste => {
-            teste.stts = false
-            return newPeople
-            // console.log(newPeople);
-          })
+          this.schedules = response.data
+          console.log(this.schedules)
         })
         .catch(err => {
           console.log(err)
         })
     },
-    setStatus(id) {
-      let pessoas = this.people
-      if (pessoas[id].stts === false) {
-        pessoas[id].stts = true
-        // pessoas.splice(id, 1)
-      }
-      console.log(pessoas[0].stts)
+
+    formatedDate(date){
+      return moment(date).format('DD/MM/YYYY')
     }
-  }
+  },
 }
 </script>
 
@@ -140,7 +130,7 @@ button {
   margin-bottom: 10px;
 }
 
-.margin{
+.margin {
   margin-top: 200px;
 }
 </style>
