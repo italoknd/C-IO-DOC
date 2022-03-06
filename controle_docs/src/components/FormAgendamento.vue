@@ -82,7 +82,7 @@
         </div>
       </div>
       <div class="col-12">
-        <button type="submit">
+        <button type="submit" class="btn" :disabled="this.v$.$invalid">
           <div class="svg-wrapper-1">
             <div class="svg-wrapper">
               <svg
@@ -108,7 +108,7 @@
 
 <script>
 import useValidate from '@vuelidate/core'
-import { required, maxLength } from '@vuelidate/validators'
+import { required, maxLength, minLength, helpers } from '@vuelidate/validators'
 import SchedulesServices from '../services/SchedulesServices'
 import MensagemConclusao from '../components/MensagemConclusao.vue'
 
@@ -139,7 +139,6 @@ export default {
   },
 
   setup() {
-
     return { v$: useValidate() }
   },
 
@@ -147,8 +146,8 @@ export default {
     return {
       schedule: {
         fullName: { required },
-        cpf: { required, maxLength: maxLength(1) },
-        phone: { required },
+        cpf: { required, minLength: minLength(14) },
+        phone: { required, minLength: minLength(16) },
         typeDocument: { required },
         expectedDate: { required, maxLength: maxLength(10) }
       }
@@ -267,6 +266,14 @@ button:active {
   transform: scale(0.95);
 }
 
+button:disabled{
+  background: rgb(88, 88, 88);
+}
+
+.btn{
+  color: white;
+}
+
 @keyframes fly-1 {
   from {
     transform: translateY(0.2em);
@@ -274,13 +281,6 @@ button:active {
 
   to {
     transform: translateY(-0.2em);
-  }
-}
-
-/*  media query */
-@media (height: 767px) {
-  #component {
-    height: 100vh;
   }
 }
 </style>

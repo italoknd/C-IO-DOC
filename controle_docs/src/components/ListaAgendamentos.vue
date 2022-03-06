@@ -1,43 +1,5 @@
 <template>
-  <div>
-    <table class="table">
-      <thead>
-        <tr>
-          <th class="col">Nome:</th>
-          <th class="col">CPF:</th>
-          <th class="col-4">Data de entrega estimada:</th>
-          <th class="col-1">Ações:</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="(schedule, index) in schedules" :key="index">
-          <td>{{ schedule.fullName }}</td>
-          <td>{{ schedule.cpf }}</td>
-          <td>{{ schedule.expectedDate }}</td>
-          <td>
-            <div>
-              <router-link
-                :to="{ name: 'EditarDados', params: { id: schedule.id } }"
-              >
-                <div>
-                  <button type="submit">Editar</button>
-                </div>
-              </router-link>
-              <!-- <select name="" id="">
-                  <option value="" selected>Pendente</option>
-                  <option value="">Entregue</option>
-                </select> -->
-              <div>
-                <button @click="setStatus(index)">Entregue</button>
-              </div>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div class="margin">
-      <h1>Documentos entregues (Teste)</h1>
+  <div class="container">
       <table class="table">
         <thead>
           <tr>
@@ -73,7 +35,6 @@
           </tr>
         </tbody>
       </table>
-    </div>
   </div>
 </template>
 
@@ -128,9 +89,5 @@ button {
   overflow: hidden;
   transition: all 0.3s;
   margin-bottom: 10px;
-}
-
-.margin {
-  margin-top: 200px;
 }
 </style>
