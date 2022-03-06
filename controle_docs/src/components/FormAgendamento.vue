@@ -6,7 +6,9 @@
       :color="color"
       v-show="message"
     />
-    <form class="column g-3 needs-validation" @submit="send">
+    <FormTeste :dados="publicacaoTeste" />
+
+    <!-- <form class="column g-3 needs-validation" @submit="send">
       <div class="row">
         <div class="col-md-4">
           <label for="validationCustom01" class="form-label"
@@ -102,11 +104,12 @@
           <span>Enviar</span>
         </button>
       </div>
-    </form>
+    </form> -->
   </div>
 </template>
 
 <script>
+import FormTeste from './form/FormTeste.vue'
 import useValidate from '@vuelidate/core'
 import { required, maxLength, minLength, helpers } from '@vuelidate/validators'
 import SchedulesServices from '../services/SchedulesServices'
@@ -117,6 +120,11 @@ export default {
 
   data() {
     return {
+      publicacaoTeste: {
+        teste1: "a",
+        teste2: "b",
+      },
+
       schedule: {
         fullName: '',
         cpf: '',
@@ -181,7 +189,8 @@ export default {
   },
 
   components: {
-    MensagemConclusao
+    MensagemConclusao,
+    FormTeste
   }
 }
 </script>
@@ -266,11 +275,11 @@ button:active {
   transform: scale(0.95);
 }
 
-button:disabled{
+button:disabled {
   background: rgb(88, 88, 88);
 }
 
-.btn{
+.btn {
   color: white;
 }
 
