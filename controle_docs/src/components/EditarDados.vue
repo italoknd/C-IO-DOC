@@ -7,7 +7,7 @@
             >Nome Completo:</label
           >
           <input
-            v-model="person.fullName"
+            v-model="schedule.fullName"
             type="text"
             class="form-control"
             id="validationCustom01"
@@ -16,7 +16,7 @@
         <div class="col-md-4">
           <label for="validationCustom02" class="form-label">CPF:</label>
           <input
-            v-model="person.cpf"
+            v-model="schedule.cpf"
             v-maska="'###.###.###-##'"
             type="text"
             class="form-control"
@@ -28,7 +28,7 @@
         <div class="col-md-4">
           <label for="validationCustom02" class="form-label">Telefone:</label>
           <input
-            v-model="person.tel"
+            v-model="schedule.phone"
             v-maska="'(##) # ####-####'"
             type="tel"
             class="form-control"
@@ -42,12 +42,13 @@
           <select
             class="form-select"
             id="validationCustom04"
-            v-model="person.doctype"
+            v-model="schedule.typeDocument"
           >
-            <option selected disabled value="">Escolha...</option>
-            <option v-for="doc in doctypes" :key="doc.id">
+            <!-- <option selected>{{ schedule.typeDocument }}</option> -->
+            <option disabled>Escolha...</option>
+            <!-- <option v-for="doc in typeDocuments" :key="doc.id">
               {{ doc.type }}
-            </option>
+            </option> -->
           </select>
         </div>
       </div>
@@ -57,7 +58,7 @@
             >Pendências <span id="obs">(Caso haja alguma)</span>:</label
           >
           <textarea
-            v-model="person.pendencies"
+            v-model="schedule.pendencyDescription"
             class="form-control"
             id="exampleFormControlTextarea1"
             rows="3"
@@ -71,7 +72,7 @@
             type="date"
             name=""
             class="form-control"
-            v-model="person.date"
+            v-model="schedule.expectedDate"
           />
         </div>
       </div>
@@ -83,18 +84,58 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'EditarDados',
   data() {
     return {
-      person: {
+      schedule: {
         fullName: '',
         cpf: '',
-        tel: '',
-        pendencies: '',
-        date: '',
-        doctype: ''
-      }
+        phone: '',
+        pendencyDescription: '',
+        expectedDate: '',
+        typeDocument: ''
+      },
+
+      typeDocuments: [
+        { id: 1, text: 'RG' },
+        { id: 2, text: 'CPF' },
+        { id: 3, text: 'Espelho' }
+      ]
+    }
+  },
+
+  mounted() {
+    this.findAllSchedules()
+  },
+
+  methods: {
+    findAllSchedules() {
+      axios
+        .get(
+          `https://api-controle-docs.herokuapp.com/schedules/${this.$route.params.id}`
+        )
+        .then(res => {
+          const {
+            fullName,
+            cpf,
+            phone,
+            pendencyDescription,
+            expectedDate,
+            typeDocument
+          } = res.data;
+
+            (this.schedule.fullName = fullName),
+            (this.schedule.cpf = cpf),
+            (this.schedule.phone = phone),
+            (this.schedule.pendencyDescription = pendencyDescription),
+            (this.schedule.expectedDate = expectedDate),
+            (this.schedule.typeDocument = typeDocument)
+
+          console.log(fullName)
+        })
     }
   }
 }
