@@ -76,19 +76,20 @@ export default {
 
 <style scoped>
 button {
-  font-family: inherit;
   font-size: 15px;
   background: var(--main-color);
   color: white;
   padding: 0.5em 2em;
-  padding-left: 1em;
-  display: flex;
-  align-items: center;
   border: none;
   border-radius: 4px;
-  overflow: hidden;
-  transition: all 0.3s;
   margin-bottom: 10px;
+  min-width: 6.5vw;
+  letter-spacing: .05em;
+  transition: .3s;
+}
+
+button:hover{
+  background: var(--btn-hover);
 }
 
 a {

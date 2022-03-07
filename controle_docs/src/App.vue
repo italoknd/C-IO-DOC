@@ -41,10 +41,15 @@ export default {
   --secundary-letter-color: #e2e8e9;
   --main-color: #0477bf;
   --secundary-color: #0468bf;
+  --btn-hover: #0092ec;
 }
 
 #app {
   background: #dafaff;
   min-height: 100vh;
+}
+
+button{
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 </style>
