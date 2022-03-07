@@ -1,10 +1,10 @@
 <template>
   <div id="editar-dados">
-    <MensagemConclusao 
-      :mensagemConclusao="message" 
+    <MensagemConclusao
+      :mensagemConclusao="message"
       :bg_color="background"
       :color="color"
-      v-show="message" 
+      v-show="message"
     />
     <form class="column g-3 needs-validation" @submit="send">
       <div class="row">
@@ -82,7 +82,25 @@
         </div>
       </div>
       <div class="col-12">
-        <button type="submit" @click="update()">Atualizar</button>
+        <button type="submit" @click="update()">
+          <div class="svg-wrapper-1">
+            <div class="svg-wrapper">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="24"
+                height="24"
+              >
+                <path fill="none" d="M0 0h24v24H0z"></path>
+                <path
+                  fill="currentColor"
+                  d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"
+                ></path>
+              </svg>
+            </div>
+          </div>
+          <span>Atualizar</span>
+        </button>
       </div>
     </form>
   </div>
@@ -153,7 +171,7 @@ export default {
     },
 
     update() {
-      this.$router.push({path: 'home'})
+      this.$router.push({ path: 'home' })
       axios
         .put(
           `https://api-controle-docs.herokuapp.com/schedules/${this.$route.params.id}`,
@@ -218,6 +236,11 @@ button {
   overflow: hidden;
   transition: all 0.3s;
   margin-top: 20px;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: var(--btn-hover);
 }
 
 button span {
@@ -237,11 +260,11 @@ button:hover .svg-wrapper {
 }
 
 button:hover svg {
-  transform: translateX(-0.4em) rotate(45deg) scale(1.1);
+  transform: translateX(-.35em) rotate(45deg) scale(1.1);
 }
 
 button:hover span {
-  transform: translateX(0.5em);
+  transform: translateX(0.35em);
 }
 
 button:active {

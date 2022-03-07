@@ -227,7 +227,7 @@ button {
   font-size: 20px;
   background: var(--main-color);
   color: white;
-  padding: 0.5em 2em;
+  padding: 0.5em 2.5em;
   padding-left: 1em;
   display: flex;
   align-items: center;
@@ -236,6 +236,11 @@ button {
   overflow: hidden;
   transition: all 0.3s;
   margin-top: 20px;
+  transition: .3s;
+}
+
+button:hover{
+  background: var(--btn-hover);
 }
 
 button span {
@@ -259,7 +264,7 @@ button:hover svg {
 }
 
 button:hover span {
-  transform: translateX(0.5em);
+  transform: translateX(0.2em);
 }
 
 button:active {
