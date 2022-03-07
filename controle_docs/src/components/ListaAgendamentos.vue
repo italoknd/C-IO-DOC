@@ -1,40 +1,40 @@
 <template>
   <div class="container">
-      <table class="table">
-        <thead>
-          <tr>
-            <th class="col">Nome:</th>
-            <th class="col">CPF:</th>
-            <th class="col-4">Data de entrega estimada:</th>
-            <th class="col-1">Ações:</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="(schedule, index) in schedules" :key="index">
-            <td>{{ schedule.fullName }}</td>
-            <td>{{ schedule.cpf }}</td>
-            <td>{{ formatedDate(schedule.expectedDate)}}</td>
-            <td>
-              <div>
-                <router-link
-                  :to="{ name: 'EditarDados', params: { id: schedule.id } }"
-                >
-                  <div>
-                    <button type="submit">Editar</button>
-                  </div>
-                </router-link>
-                <!-- <select name="" id="">
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="col">Nome:</th>
+          <th class="col">CPF:</th>
+          <th class="col-4">Data de entrega estimada:</th>
+          <th class="col-1">Ações:</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="schedule in schedules" :key="schedule.id">
+          <td>{{ schedule.fullName }}</td>
+          <td>{{ schedule.cpf }}</td>
+          <td>{{ formatedDate(schedule.expectedDate) }}</td>
+          <td>
+            <div>
+              <router-link
+                :to="{ name: 'EditarDados', params: { id: schedule.id } }"
+              >
+                <div>
+                  <button type="submit">Editar</button>
+                </div>
+              </router-link>
+              <!-- <select name="" id="">
                   <option value="" selected>Pendente</option>
                   <option value="">Entregue</option>
                 </select> -->
-                <div>
-                  <button>Entregue</button>
-                </div>
+              <div>
+                <button>Entregue</button>
               </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
@@ -91,7 +91,7 @@ button {
   margin-bottom: 10px;
 }
 
-a{
+a {
   text-decoration: none;
 }
 </style>

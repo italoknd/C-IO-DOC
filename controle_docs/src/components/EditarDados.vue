@@ -1,5 +1,11 @@
 <template>
   <div id="editar-dados">
+    <MensagemConclusao 
+      :mensagemConclusao="message" 
+      :bg_color="background"
+      :color="color"
+      v-show="message" 
+    />
     <form class="column g-3 needs-validation" @submit="send">
       <div class="row">
         <div class="col-md-4">
@@ -44,11 +50,10 @@
             id="validationCustom04"
             v-model="schedule.typeDocument"
           >
-            <!-- <option selected>{{ schedule.typeDocument }}</option> -->
             <option disabled>Escolha...</option>
-            <!-- <option v-for="doc in typeDocuments" :key="doc.id">
-              {{ doc.type }}
-            </option> -->
+            <option v-for="doc in typeDocuments" :key="doc.id">
+              {{ doc.text }}
+            </option>
           </select>
         </div>
       </div>
@@ -77,7 +82,7 @@
         </div>
       </div>
       <div class="col-12">
-        <button type="submit">Atualizar</button>
+        <button type="submit" @click="update()">Atualizar</button>
       </div>
     </form>
   </div>
@@ -85,6 +90,7 @@
 
 <script>
 import axios from 'axios'
+import MensagemConclusao from '../components/MensagemConclusao.vue'
 
 export default {
   name: 'EditarDados',
@@ -103,16 +109,24 @@ export default {
         { id: 1, text: 'RG' },
         { id: 2, text: 'CPF' },
         { id: 3, text: 'Espelho' }
-      ]
+      ],
+
+      message: '',
+      background: '#0477bf',
+      color: 'white'
     }
   },
 
+  components: {
+    MensagemConclusao
+  },
+
   mounted() {
-    this.findAllSchedules()
+    this.getSchedule()
   },
 
   methods: {
-    findAllSchedules() {
+    getSchedule() {
       axios
         .get(
           `https://api-controle-docs.herokuapp.com/schedules/${this.$route.params.id}`
@@ -125,9 +139,9 @@ export default {
             pendencyDescription,
             expectedDate,
             typeDocument
-          } = res.data;
+          } = res.data
 
-            (this.schedule.fullName = fullName),
+          ;(this.schedule.fullName = fullName),
             (this.schedule.cpf = cpf),
             (this.schedule.phone = phone),
             (this.schedule.pendencyDescription = pendencyDescription),
@@ -135,6 +149,24 @@ export default {
             (this.schedule.typeDocument = typeDocument)
 
           console.log(fullName)
+        })
+    },
+
+    update() {
+      this.$router.push({path: 'home'})
+      axios
+        .put(
+          `https://api-controle-docs.herokuapp.com/schedules/${this.$route.params.id}`,
+          this.schedule
+        )
+        .then(res => {
+          this.schedule = {}
+          console.log(res)
+
+          this.message = 'Dados editados com sucesso!'
+        })
+        .catch(err => {
+          console.log(err)
         })
     }
   }
