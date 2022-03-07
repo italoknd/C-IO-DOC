@@ -44,7 +44,6 @@ export default {
 #login {
   animation: slide 2s;
   min-height: 100vh;
-  background: #dafaff;
 }
 
 @keyframes slide {
@@ -90,10 +89,6 @@ main input {
   font-size: 1rem;
 }
 
-input::placeholder {
-  color: var();
-}
-
 main button {
   display: flex;
   justify-content: center;
@@ -104,7 +99,7 @@ main button {
   transition: 0.4s;
   width: 100%;
   border-radius: 3px;
-  font-size: 1rem;
+  font-size: 1.1em;
 }
 
 main button:hover {
