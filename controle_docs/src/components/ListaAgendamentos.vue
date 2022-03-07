@@ -84,7 +84,7 @@ button {
   border-radius: 4px;
   margin-bottom: 10px;
   margin-left: -3px;
-  min-width: 6.5vw;
+  min-width: 9.5vw;
   letter-spacing: .05em;
   transition: .3s;
 }
